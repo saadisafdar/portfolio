@@ -1,0 +1,79 @@
+{
+  "profile": {
+    "name": "Saadi Safdar",
+    "shortName": "Saadi",
+    "tagline": "Computer Science student building at the intersection of code and vision.",
+    "role": "CS Student & Developer",
+    "specialization": "Python · Web Development · Computer Vision",
+    "location": "Wah Cantt, Pakistan",
+    "yearsOfExperience": "2+",
+    "bio": "Computer Science student focused on problem-solving, clean code, and continuous improvement. Building with Python, web technologies, and computer vision — open to internships, collaborations, and open source.",
+    "avatarSvg": "/src/assets/img/avatar.svg",
+    "social": {
+      "github": "https://github.com/saadisafdar",
+      "linkedin": "https://linkedin.com/in/saadisafdar",
+      "instagram": "https://www.instagram.com/saadisafdar/",
+      "youtube": "https://www.youtube.com/@Fur_And_Funny",
+      "facebook": "https://www.facebook.com/saadisafdar1/",
+      "discord": "https://discord.com/users/saadisafdar",
+      "reddit": "https://www.reddit.com/user/Efficient-Word1384/",
+      "tiktok": "https://www.tiktok.com/@saadisafdar",
+      "x": "https://x.com/saadisafder",
+      "threads": "https://www.threads.com/@saadisafdar",
+      "email": "saadisafder@yahoo.com",
+      "phone": ""
+    }
+  },
+  "skills": {
+    "categories": [
+      { "name": "Languages", "items": ["C++", "Java", "Python", "SQL", "HTML5", "CSS3", "JavaScript"] },
+      { "name": "Web & Frameworks", "items": ["React", "Next.js", "Node.js", "Express.js", "Tailwind CSS", "Bootstrap", "WordPress"] },
+      { "name": "AI / ML & Data", "items": ["TensorFlow", "Keras", "PyTorch", "Scikit-learn", "Pandas", "NumPy", "Matplotlib", "OpenCV"] },
+      { "name": "Databases", "items": ["MongoDB", "MySQL", "SQL Server"] },
+      { "name": "Tools & Platforms", "items": ["Git", "GitHub", "VS Code", "Antigravity", "Jupyter", "Google Colab", "Google AI Studio", "Canva", "Cloudflare", "Vercel", "Netlify"] }
+    ]
+  },
+  "education": [
+    { "institution": "University of Wah", "degree": "BSc Computer Science", "period": "2024 — 2028", "location": "Wah Cantt, Pakistan" }
+  ],
+  "experience": [],
+  "projects": [
+    {
+      "id": "computer-vision-projects",
+      "title": "Computer Vision & Automation Projects",
+      "subtitle": "Real-world Python projects",
+      "description": "A collection of automation scripts, computer vision experiments, and utilities built in Python.",
+      "stack": ["Python", "OpenCV", "NumPy"],
+      "role": "Developer",
+      "year": "2026",
+      "link": "https://github.com/saadisafdar/Projects",
+      "image": "",
+      "highlight": true
+    },
+    {
+      "id": "webdev",
+      "title": "WebDev",
+      "subtitle": "Frontend projects, modern UI",
+      "description": "Frontend builds using HTML, CSS, and JavaScript with modern UI design patterns.",
+      "stack": ["HTML", "CSS", "JavaScript"],
+      "role": "Developer",
+      "year": "2025",
+      "link": "https://github.com/saadisafdar/WebDev",
+      "image": "",
+      "highlight": false
+    },
+    {
+      "id": "university-work",
+      "title": "University Lab Work",
+      "subtitle": "Core programming implementations",
+      "description": "University lab tasks, assignments, and practical implementations of core programming concepts.",
+      "stack": ["C++"],
+      "role": "Developer",
+      "year": "2024",
+      "link": "https://github.com/saadisafdar/Work",
+      "image": "",
+      "highlight": false
+    }
+  ],
+  "testimonials": []
+}
