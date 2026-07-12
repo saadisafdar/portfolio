@@ -401,10 +401,14 @@ header {
 .Skills .container .mainSkill .front , .back , .datasci, .tools{
   width: 100%;
   max-width: 500px;
+  min-width: 400px;
   background: transparent;
   border: 1px solid #695aa6;
   border-radius: 16px;
   padding: 18px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .Skills .container .mainSkill .front h2, .back h2, .datasci h2, .tools h2{
@@ -421,9 +425,11 @@ header {
 .Skills .container .mainSkill .box{
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .Skills .container .mainSkill .front .frontSkill, .back .backSkill, .datasci .datasciSkill, .tools .toolsSkill{
@@ -438,6 +444,8 @@ header {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  min-width: 100px;
+  text-align: center;
 }
 
 .Skills .container .mainSkill .front .box img{
