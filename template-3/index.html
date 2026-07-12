@@ -67,7 +67,7 @@
                 <p class="p2">I am Saadi Safdar, a Computer Science student passionate about building modern, scalable, and user-friendly software. I enjoy developing full-stack web applications, designing backend systems, and working with databases to solve real-world problems.</p>
                 <p class="p2">I continuously improve my skills by building practical projects, learning new technologies, and exploring software engineering best practices. My interests include web development, databases, APIs, object-oriented programming, and system design.</p>
                 <p class="p2">I enjoy turning ideas into functional applications with clean code, responsive interfaces, and efficient architectures.</p>
-                <a href="images/My_Resume.pdf" target="_blank"><button>Download CV</button></a>
+                <a href="images/My_Resume.pdf" download="Saadi_Safdar_Resume.pdf" onclick="downloadResume(event)"><button>Download CV</button></a>
             </div>
         </div>
     </section>
@@ -408,9 +408,9 @@
         <div class="con">
             <div class="article-card">
                 <div class="content">
-                    <p class="title"><b>Bachelor of Science in Computer Science (BSCS)</b></p>
-                    <p class="subtitle">University of Wah - 2024 - Present</p>
-                    <p class="description"><b>Relevant Coursework:</b> Data Structures & Algorithms, Database Management Systems, Object-Oriented Programming, Software Engineering, Operating Systems, Computer Networks, Artificial Intelligence, Web Technologies</p>
+                    <p class="title"><b>Bachelor of Science in Computer Science</b></p>
+                    <p class="subtitle">University of Wah - 2024 – Present</p>
+                    <p class="description">Currently pursuing a Bachelor of Science in Computer Science at the University of Wah, building strong foundations in software engineering, database management, programming, algorithms, operating systems, computer networks, artificial intelligence, and modern web technologies through academic coursework and practical projects.</p>
                 </div>
                 <img src="images/blog1.webp" alt="education-cover" />
             </div>
@@ -419,7 +419,7 @@
                 <div class="content">
                     <p class="title"><b>Intermediate (ICS)</b></p>
                     <p class="subtitle">Focus on Computer Science, Mathematics and Physics</p>
-                    <p class="description">Completed intermediate education with emphasis on core science subjects including computer science fundamentals, advanced mathematics, and physics principles.</p>
+                    <p class="description">Completed Intermediate in Computer Science with a strong focus on Computer Science, Mathematics, and Physics, developing analytical thinking, logical reasoning, and problem-solving skills.</p>
                 </div>
                 <img src="images/blog1.webp" alt="education-cover" />
             </div>
@@ -428,16 +428,7 @@
                 <div class="content">
                     <p class="title"><b>Matriculation</b></p>
                     <p class="subtitle">Science Group</p>
-                    <p class="description">Completed secondary education with focus on science subjects, laying the foundation for further studies in computer science and technology.</p>
-                </div>
-                <img src="images/blog1.webp" alt="education-cover" />
-            </div>
-
-            <div class="article-card">
-                <div class="content">
-                    <p class="title"><b>Currently Learning</b></p>
-                    <p class="subtitle">Self-Directed Study</p>
-                    <p class="description">Next.js, System Design, Advanced Backend Development, Software Architecture, AI Integration</p>
+                    <p class="description">Completed Matriculation in the Science Group with core studies in Mathematics, Physics, Chemistry, and computer fundamentals, establishing a strong academic foundation for higher education.</p>
                 </div>
                 <img src="images/blog1.webp" alt="education-cover" />
             </div>
@@ -450,7 +441,7 @@
         <div class="contact-container">
             <div class="contact-info">
                 <h1>Contact Me</h1>
-                <p>Email:<br> saadisafdar@yahoo.com</p>
+                <p>Email:<br> <a href="mailto:saadisafder@yahoo.com" style="color: inherit; text-decoration: none;">saadisafder@yahoo.com</a></p>
                 <p>Social Links:</p>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/saadisafdar" target="_blank"><img src="images/linkedin.svg" alt="LinkedIn"></a>
@@ -478,6 +469,31 @@
 
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
+
+        // Download Resume function to force download
+        function downloadResume(event) {
+            event.preventDefault();
+            const link = event.currentTarget;
+            const href = link.getAttribute('href');
+            const filename = 'Saadi_Safdar_Resume.pdf';
+            
+            fetch(href)
+                .then(response => response.blob())
+                .then(blob => {
+                    const blobUrl = window.URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
+                    const tempLink = document.createElement('a');
+                    tempLink.href = blobUrl;
+                    tempLink.download = filename;
+                    document.body.appendChild(tempLink);
+                    tempLink.click();
+                    document.body.removeChild(tempLink);
+                    window.URL.revokeObjectURL(blobUrl);
+                })
+                .catch(() => {
+                    // Fallback: open in new tab if fetch fails
+                    window.open(href, '_blank');
+                });
+        }
 
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.getElementById('menuToggle');
