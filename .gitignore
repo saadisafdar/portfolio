@@ -1,330 +1,758 @@
-# ============================
-# OS and Temp Files
-# ============================
-*.swp
-*.tmp
-*.temp
-*.bak
-*.backup
-*.md
-*.cache
-*.log
-.DS_Store
-Thumbs.db
+# Dependencies
+node_modules/
 
-# ============================
-# Editors / IDEs
-# ============================
-.vscode/
-.idea/
-*.code-workspace
+# Build artifacts
+dist/
+build/
+target/
 
-# VSCode-specific temp / workspace files
-.history/
-*.workspace
-
-# ============================
 # Python
-# ============================
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-.env
-.venv/
+.Python
 env/
 venv/
+.venv/
+.ENV
+.ENV.local
+.env.*
+.env
+.pytest_cache/
+.mypy_cache/
+.coverage
+coverage/
 
-# Jupyter
-.ipynb_checkpoints/
+# Node.js
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# ============================
-# Node / Web Dev
-# ============================
-node_modules/
-dist/
-build/
-npm-debug.log
-yarn-debug.log
-yarn-error.log
+# Logs
+*.log
 
-# ============================
-# C/C++ Build Files
-# ============================
-*.o
-*.out
-*.obj
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+
+# Environment variables
+.env
+.env.local
+.env.*
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# Temporary folders
+temp/
+tmp/
+
+# Compiled binary files
 *.exe
 *.dll
 *.so
 *.a
-*.lo
-*.la
+*.obj
+*.out
+
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+
+# Web files
+*.min.js
+*.min.css
+*.bundle.js
+*.bundle.css
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Documentation
+docs/_build/
+docs/build/
+
+# Distribution / packaging
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# SASS/SCSS
+.sass-cache/
+
+# Ruby
+.bundle/
+Gemfile.lock
+
+# Java
 *.class
 *.jar
+*.war
+*.ear
+hs_err_pid*
+
+# C#
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+mono_crash.*
+
+# Go
+*.out
+
+# Rust
+*.rlib
+
+# Swift
+*.xcodeproj/
+*.xcworkspace/
+*.swiftpm/
+
+# Julia
+.julia/
+
+# Zig
+zig-cache/
+zig-out/
+
+# Gradle
+.gradle/
+build/
+
+# Maven
+target/
 
 # CMake
 CMakeFiles/
-CMakeCache.txt
 cmake_install.cmake
 Makefile
+CMakeCache.txt
 
-# ============================
-# Large or Generated Files
-# ============================
+# Android
+*.apk
+*.aab
+*.aar
+*.dex
 
-# Do NOT track large binary assets
-*.zip
-*.tar.gz
-*.7z
-*.rar
-*.iso
+# iOS
+*.ipa
 
-# Office files (can be huge)
-# *.pptx
-# *.ppt
-# *.xlsx
-# *.xls
-# *.docx
-# *.doc
+# Unity
+Library/
+Temp/
+Obj/
+Build/
+Logs/
 
-# Media
-*.mp4
-*.mkv
-*.avi
-*.mov
-*.mp3
-*.wav
-*.flac
+# Unreal Engine
+Saved/
+Binaries/
 
-# Graphics
-*.psd
-*.svg
-*.ai
-*.xcf
-*.png
-*.jpg
-*.jpeg
+# Docker
+.dockerignore
 
-# Backups
+# Kubernetes
+.kube/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfvars
+
+# Ansible
+.retry/
+
+# Vagrant
+.vagrant/
+
+# Puppet
+.gitmodules
+
+# Salt
+.salt/
+
+# Chef
+.chef/
+
+# AWS
+.aws/
+
+# Azure
+.azure/
+
+# Google Cloud
+.gcloud/
+
+# Heroku
+.heroku/
+
+# Netlify
+.netlify/
+
+# Vercel
+.vercel/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache directories
+.cache/
+.caches/
+
+# Lock files
+package-lock.json
+composer.lock
+Pipfile.lock
+poetry.lock
+Cargo.lock
+Gemfile.lock
+
+# Configuration files
+config/
+configs/
+
+# Secrets
+secrets/
+.secret*
+
+# Backup files
+*~
 *.bak
-*.old
-*.orig
+*.backup
 
-# ============================
-# Git
-# ============================
-.gitignore_global
+# Temporary files
+*.tmp
+*.temp
+*.temp.*
 
+# Vim
+*.un~
+Session.vim
 
-###############################################################################
-# Operating System
-###############################################################################
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
 
-# Windows
-Thumbs.db
-Desktop.ini
-$RECYCLE.BIN/
+# Nano
+.nano_history
+
+# Pico
+.pico_history
+
+# Atom
+.atom/
+
+# Sublime Text
+*.sublime-workspace
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.sublime_session
+*.sublime_project
+
+# Visual Studio Code
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/settings.json
+
+# WebStorm
+.idea/
+
+# IntelliJ IDEA
+.idea/
+
+# PyCharm
+.idea/
+
+# PhpStorm
+.idea/
+
+# RubyMine
+.idea/
+
+# AppCode
+.idea/
+
+# CLion
+.idea/
+
+# DataGrip
+.idea/
+
+# Rider
+.idea/
+
+# WebStorm
+.idea/
+
+# GoLand
+.idea/
+
+# Android Studio
+.idea/
+*.iml
+*.iws
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.settings
+*.lock
+*.sw?
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# Eclipse
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.gradle/
+.project
+.classpath
+.cproject
+.bsp/
+
+# VS Code
+.vscode/
+
+# Vim
+*.swp
+*.swo
+*.swn
+*.swm
+*.swl
+*.swd
+*.swe
+*.swf
+*.swg
+*.swh
+*.swi
+*.swj
+*.swk
+*.swl
+*.swm
+*.swn
+*.swo
+*.swp
+*.swq
+*.swr
+*.sws
+*.swt
+*.swu
+*.swv
+*.sww
+*.swx
+*.swy
+*.swz
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Atom
+.atom/
+
+# Sublime Text
+*.sublime-workspace
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.sublime_session
+*.sublime_project
+
+# Notepad++
+*.bak
+
+# BBEdit
+*.bbl
+
+# Kate
+*.kate-swp
+
+# Gedit
+*~
+
+# Mousepad
+*~
+
+# TextEdit
+*.txt.bak
+
+# LibreOffice
+*.tmp
+*.bak
+*~
+
+# Microsoft Office
+~$*
+.~$*
+*~
+*.tmp
+
+# Linux
+*~
+*.tmp
+*.bak
+*~
 
 # macOS
 .DS_Store
 .AppleDouble
 .LSOverride
+Icon?
+Thumbs.db
+ehthumbs.db
+*.DS_Store
+desktop.ini
 
-# Linux
-*~
-
-###############################################################################
-# Editor / IDE
-###############################################################################
-
-.vscode/
-.idea/
-*.code-workspace
-
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-
-###############################################################################
-# Logs
-###############################################################################
-
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-###############################################################################
-# Node.js
-###############################################################################
-
-node_modules/
-.npm/
-.pnpm-store/
-
-###############################################################################
-# Build / Cache
-###############################################################################
-
-dist/
-build/
-out/
-.cache/
-.temp/
-.tmp/
-coverage/
-
-###############################################################################
-# Environment
-###############################################################################
-
-.env
-.env.*
-!.env.example
-
-###############################################################################
-# Package Managers
-###############################################################################
-
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-bun.lockb
-
-###############################################################################
-# Framework Output
-###############################################################################
-
-.next/
-.nuxt/
-.vercel/
-.netlify/
-
-###############################################################################
-# Python
-###############################################################################
-
-__pycache__/
-*.py[cod]
-.venv/
-venv/
-env/
-
-###############################################################################
-# Documentation
-###############################################################################
-
-*.md
-
-# Keep README if desired
-!README.md
-
-###############################################################################
-# AI / LLM Generated Files
-###############################################################################
-
-.claude/
-.cursor/
-.copilot/
-.aider*
-.windsurf/
-.zed/
-.vibe/
-.mistral/
-.ai/
-
-###############################################################################
-# Temporary Files
-###############################################################################
-
+# Windows
+Thumbs.db
+ehthumbs.db
+Icon?
 *.tmp
 *.bak
-*.old
-*.orig
-*.rej
-*.swp
-*.swo
+*~
 
-###############################################################################
-# Images You Don't Want Tracked
-###############################################################################
+# Unix
+*~
+*.tmp
+*.bak
+*~
 
-*.psd
-*.ai
-*.xcf
-
-###############################################################################
-# Archives
-###############################################################################
-
-*.zip
-*.7z
-*.rar
-*.tar
-*.gz
-
-###############################################################################
-# Secrets
-###############################################################################
-
-*.pem
-*.key
-*.crt
-*.p12
-
-###############################################################################
-# Local Notes
-###############################################################################
-
-notes/
-drafts/
-todo.txt
-
-###############################################################################
-# Generated Files
-###############################################################################
-
-*.map
-*.cache
-
-###############################################################################
-# Keep Source Files
-###############################################################################
-# HTML
-!*.html
-
-# CSS
-!*.css
-
-# JavaScript
-!*.js
-
-# Images
-!*.png
-!*.jpg
-!*.jpeg
-!*.gif
-!*.svg
-!*.webp
-!*.ico
-
-# Fonts
-!*.woff
-!*.woff2
-!*.ttf
-!*.otf
-
-# JSON
-!*.json
-
-# XML
-!*.xml
-
-# TXT
-!*.txt
-
-
-.gitignnore_global
+# Generic
+*~
+*.tmp
+*.bak
+*~
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+*.DS_Store
+desktop.ini
+*.tmp
+*.bak
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*~
+*......
