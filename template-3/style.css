@@ -138,7 +138,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-    
+
 }
 
 .hero-container{
@@ -875,39 +875,43 @@ h1 span {
 
 /* project section CSS ends here  */
 /* --------------------------------------------------------------------- */
-/* Blogs section CSS starts here  */
+/* Education section CSS starts here  */
 
-.blogs {
+.education {
   display: flex;
   flex-direction: column;
-  height: 50vh;
+  min-height: auto;
   align-items: center;
   justify-content: center;
   margin-bottom: 50px;
+  padding: 50px 20px;
+  background-color: #f9f9f9;
 }
-  
-.blogs .tit{
+
+.education .tit{
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
-.blogs .tit h1{
+.education .tit h1{
   font-size: 30px;
   font-family: Leckerli One, sans-serif;
 }
 
-.blogs .con{
+.education .con{
   width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px;
 }
 
 .article-card {
-  width: 350px;
+  width: 100%;
   height: 220px;
   border-radius: 12px;
   overflow: hidden;
@@ -915,19 +919,20 @@ h1 span {
   font-family: Arial, Helvetica, sans-serif;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 300ms;
+  flex-shrink: 0;
 }
-  
+
 .article-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-  
+
 .article-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-  
+
 .article-card .content {
   box-sizing: border-box;
   width: 100%;
@@ -940,25 +945,22 @@ h1 span {
 
 .article-card .title {
   margin: 0;
-}
-
-.article-card .title {
+  color: white;
   font-size: 17px;
-  color: #212529;
 }
 
 .article-card .subtitle {
   font-size: 14px;
-  color: #6c757d;
+  color: #e0e0e0;
   margin: 5px 0;
 }
 
 .article-card .description {
   font-size: 13px;
-  color: #495057;
+  color: #f5f5f5;
   line-height: 1.5;
 }
-  
+
 .article-card .btn {
     padding: 3px;
     margin: 5px;
@@ -972,7 +974,29 @@ h1 span {
     cursor: pointer;
     transition: all 300ms;
 }
-/* blogs section CSS ends here */
+
+@media (max-width: 768px) {
+  .education .con {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .education .tit h1 {
+    font-size: 24px;
+  }
+  
+  .education .con {
+    grid-template-columns: 1fr;
+  }
+  
+  .article-card {
+    height: 200px;
+  }
+}
+
+/* Education section CSS ends here */
 /* ---------------------------------------------------------------------------- */
 /* contact section CSS starts here  */
 body {
