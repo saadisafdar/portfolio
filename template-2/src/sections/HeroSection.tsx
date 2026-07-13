@@ -1,11 +1,15 @@
 import FadeIn from '../components/FadeIn';
 import Magnet from '../components/Magnet';
 import ContactButton from '../components/ContactButton';
+// Replace with user's own avatar image
+import avatarUrl from '../assets/avatar.png';
 
-const PORTRAIT_URL =
-  'https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png';
-
-const NAV_LINKS = ['About', 'Price', 'Projects', 'Contact'];
+const NAV_LINKS = [
+  { label: 'About', href: '#about' },
+  { label: 'Courses', href: '#courses' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Contact', href: '#contact' },
+];
 
 export default function HeroSection() {
   return (
@@ -14,14 +18,14 @@ export default function HeroSection() {
       style={{ overflowX: 'clip' }}
     >
       <FadeIn as="nav" delay={0} y={-20}>
-        <div className="flex justify-between px-6 pt-6 md:px-10 md:pt-8">
+        <div className="flex justify-between px-6 pt-4 md:px-10 md:pt-6">
           {NAV_LINKS.map((link) => (
             <a
-              key={link}
-              href={`#${link.toLowerCase()}`}
+              key={link.label}
+              href={link.href}
               className="text-sm font-medium uppercase tracking-wider text-[#D7E2EA] transition-opacity duration-200 hover:opacity-70 md:text-lg lg:text-[1.4rem]"
             >
-              {link}
+              {link.label}
             </a>
           ))}
         </div>
@@ -29,7 +33,7 @@ export default function HeroSection() {
 
       <div className="overflow-hidden">
         <FadeIn delay={0.15} y={40}>
-          <h1 className="hero-heading w-full whitespace-nowrap text-center text-[14vw] font-black uppercase leading-none tracking-tight sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw] mt-6 sm:mt-4 md:-mt-5">
+          <h1 className="hero-heading w-full whitespace-nowrap text-center text-[14vw] font-black uppercase leading-none tracking-tight sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw] mt-2 sm:mt-1 md:-mt-6">
             Hi, i&apos;m saadi
           </h1>
         </FadeIn>
@@ -43,12 +47,12 @@ export default function HeroSection() {
             activeTransition="transform 0.3s ease-out"
             inactiveTransition="transform 0.6s ease-in-out"
           >
-            <img src={PORTRAIT_URL} alt="Saadi portrait" className="w-full" />
+            <img src={avatarUrl} alt="Saadi portrait" className="w-full" />
           </Magnet>
         </FadeIn>
       </div>
 
-      <div className="mt-auto flex items-end justify-between px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">
+      <div className="mt-auto flex items-end justify-between px-6 pb-5 sm:pb-6 md:px-10 md:pb-7">
         <FadeIn delay={0.35} y={20}>
           <p
             className="max-w-[160px] font-light uppercase leading-snug tracking-wide text-[#D7E2EA] sm:max-w-[220px] md:max-w-[260px]"

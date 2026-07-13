@@ -1,8 +1,9 @@
 import HeroSection from './sections/HeroSection';
 import MarqueeSection from './sections/MarqueeSection';
 import AboutSection from './sections/AboutSection';
-import ServicesSection from './sections/ServicesSection';
+import CoursesSection from './sections/CoursesSection';
 import ProjectsSection from './sections/ProjectsSection';
+import ContactSection from './sections/ContactSection';
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
       <HeroSection />
       <MarqueeSection />
       <AboutSection />
-      <ServicesSection />
+      <CoursesSection />
       <ProjectsSection />
+      <ContactSection />
     </main>
   );
 }

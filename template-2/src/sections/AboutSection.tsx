@@ -44,7 +44,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative flex min-h-screen flex-col items-center justify-center px-5 py-20 sm:px-8 md:px-10"
+      className="relative flex min-h-screen flex-col items-center justify-center px-5 py-12 sm:px-8 md:px-10"
     >
       {CORNER_IMAGES.map((img) => (
         <FadeIn
@@ -59,7 +59,7 @@ export default function AboutSection() {
         </FadeIn>
       ))}
 
-      <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16">
+      <div className="flex flex-col items-center gap-6 sm:gap-8 md:gap-10">
         <FadeIn delay={0} y={40}>
           <h2
             className="hero-heading text-center font-black uppercase leading-none tracking-tight"
@@ -69,7 +69,7 @@ export default function AboutSection() {
           </h2>
         </FadeIn>
 
-        <div className="flex flex-col items-center gap-16 sm:gap-20 md:gap-24">
+        <div className="flex flex-col items-center gap-10 sm:gap-12 md:gap-14">
           <AnimatedText
             text={ABOUT_TEXT}
             className="max-w-[560px] text-center font-medium leading-relaxed text-[#D7E2EA]"

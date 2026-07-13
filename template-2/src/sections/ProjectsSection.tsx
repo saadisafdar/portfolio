@@ -1,49 +1,52 @@
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { useRef } from 'react';
+import { Github } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
-import LiveProjectButton from '../components/LiveProjectButton';
+// Replace these with the user's real project screenshots
+import intellicrime1 from '../assets/projects/intellicrime-1.png';
+import intellicrime2 from '../assets/projects/intellicrime-2.png';
+import intellicrime3 from '../assets/projects/intellicrime-3.png';
+import lancerlink1 from '../assets/projects/lancerlink-1.png';
+import lancerlink2 from '../assets/projects/lancerlink-2.png';
+import lancerlink3 from '../assets/projects/lancerlink-3.png';
+import uce1 from '../assets/projects/universalconversionengine-1.png';
+import uce2 from '../assets/projects/universalconversionengine-2.png';
+import uce3 from '../assets/projects/universalconversionengine-3.png';
 
 interface Project {
   number: string;
   name: string;
   category: string;
+  githubUrl: string;
   col1Images: [string, string];
   col2Image: string;
 }
 
+// Replace each `#` githubUrl with the real GitHub repo URL for that project
 const PROJECTS: Project[] = [
   {
     number: '01',
     name: 'IntelliCrime System',
     category: 'Academic',
-    col1Images: [
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85',
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85',
-    ],
-    col2Image:
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85',
+    githubUrl: '#', // IntelliCrime System repo URL
+    col1Images: [intellicrime1, intellicrime2],
+    col2Image: intellicrime3,
   },
   {
     number: '02',
     name: 'LancerLink',
     category: 'Academic',
-    col1Images: [
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85',
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85',
-    ],
-    col2Image:
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85',
+    githubUrl: '#', // LancerLink repo URL
+    col1Images: [lancerlink1, lancerlink2],
+    col2Image: lancerlink3,
   },
   {
     number: '03',
     name: 'UniversalConversionEngine',
     category: 'Personal',
-    col1Images: [
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85',
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85',
-    ],
-    col2Image:
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85',
+    githubUrl: '#', // UniversalConversionEngine repo URL
+    col1Images: [uce1, uce2],
+    col2Image: uce3,
   },
 ];
 
@@ -65,7 +68,7 @@ function ProjectCard({
   const scale = useTransform(progress, range, [1, targetScale]);
 
   return (
-    <div className="sticky top-24 h-[85vh] md:top-32">
+    <div className="sticky top-24 h-[70vh] md:top-32">
       <motion.div
         className="rounded-[40px] border-2 border-[#D7E2EA] p-4 sm:rounded-[50px] sm:p-6 md:rounded-[60px] md:p-8"
         style={{
@@ -95,7 +98,15 @@ function ProjectCard({
               {project.name}
             </span>
           </div>
-          <LiveProjectButton />
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 rounded-full border-2 border-[#D7E2EA] px-8 py-3 text-sm font-medium uppercase tracking-widest text-[#D7E2EA] transition-colors duration-200 hover:bg-[#D7E2EA]/10 sm:px-10 sm:py-3.5 sm:text-base"
+          >
+            <Github className="h-5 w-5" strokeWidth={1.75} />
+            GitHub
+          </a>
         </div>
 
         <div className="flex gap-3 sm:gap-4">
@@ -141,12 +152,12 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative z-10 -mt-10 rounded-t-[40px] px-5 py-20 sm:-mt-12 sm:rounded-t-[50px] sm:px-8 md:-mt-14 md:rounded-t-[60px] md:px-10"
+      className="relative z-10 -mt-10 rounded-t-[40px] px-5 py-12 sm:-mt-12 sm:rounded-t-[50px] sm:px-8 sm:py-14 md:-mt-14 md:rounded-t-[60px] md:px-10 md:py-16"
       style={{ background: '#0C0C0C' }}
     >
       <FadeIn delay={0} y={40}>
         <h2
-          className="hero-heading mb-16 text-center font-black uppercase leading-none tracking-tight sm:mb-20 md:mb-28"
+          className="hero-heading mb-10 text-center font-black uppercase leading-none tracking-tight sm:mb-12 md:mb-16"
           style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
         >
           Project

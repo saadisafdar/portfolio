@@ -77,7 +77,7 @@ export default function MarqueeSection() {
   return (
     <section
       ref={sectionRef}
-      className="flex flex-col gap-3 pb-10 pt-24 sm:pt-32 md:pt-40"
+      className="flex flex-col gap-3 pb-10 pt-12 sm:pt-16 md:pt-20"
       style={{ background: '#0C0C0C' }}
     >
       <MarqueeRow

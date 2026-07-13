@@ -17,14 +17,7 @@ function Char({
   range: [number, number];
 }) {
   const opacity = useTransform(progress, range, [0.2, 1]);
-  return (
-    <span className="relative inline">
-      <span className="opacity-0">{char}</span>
-      <motion.span style={{ opacity }} className="absolute left-0 top-0">
-        {char}
-      </motion.span>
-    </span>
-  );
+  return <motion.span style={{ opacity }}>{char}</motion.span>;
 }
 
 export default function AnimatedText({ text, className, style }: AnimatedTextProps) {
@@ -34,18 +27,32 @@ export default function AnimatedText({ text, className, style }: AnimatedTextPro
     offset: ['start 0.8', 'end 0.2'],
   });
 
-  const chars = text.split('');
+  const words = text.split(' ');
+  const totalChars = text.length;
+  let charIndex = 0;
 
   return (
     <p ref={ref} className={className} style={style}>
-      {chars.map((char, i) => (
-        <Char
-          key={i}
-          char={char === ' ' ? '\u00A0' : char}
-          progress={scrollYProgress}
-          range={[i / chars.length, Math.min(1, (i + 1) / chars.length)]}
-        />
-      ))}
+      {words.map((word, wi) => {
+        const start = charIndex;
+        charIndex += word.length + 1;
+        return (
+          <span key={wi} className="inline-block whitespace-nowrap">
+            {word.split('').map((char, ci) => {
+              const i = start + ci;
+              return (
+                <Char
+                  key={ci}
+                  char={char}
+                  progress={scrollYProgress}
+                  range={[i / totalChars, Math.min(1, (i + 1) / totalChars)]}
+                />
+              );
+            })}
+            {wi < words.length - 1 && '\u00A0'}
+          </span>
+        );
+      })}
     </p>
   );
 }
