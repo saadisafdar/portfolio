@@ -19,8 +19,8 @@ function Char({
   const opacity = useTransform(progress, range, [0.2, 1]);
   return (
     <span className="relative inline">
-      <span className="opacity-20">{char}</span>
-      <motion.span style={{ opacity }} className="absolute left-0">
+      <span className="opacity-0">{char}</span>
+      <motion.span style={{ opacity }} className="absolute left-0 top-0">
         {char}
       </motion.span>
     </span>
