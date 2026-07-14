@@ -1,7 +1,6 @@
 import FadeIn from '../components/FadeIn';
 import Magnet from '../components/Magnet';
 import ContactButton from '../components/ContactButton';
-// Replace with user's own avatar image
 import avatarUrl from '../assets/avatar.png';
 
 const NAV_LINKS = [

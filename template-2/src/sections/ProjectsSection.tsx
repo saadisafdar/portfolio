@@ -2,7 +2,6 @@ import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { useRef } from 'react';
 import { Github } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
-// Replace these with the user's real project screenshots
 import intellicrime1 from '../assets/projects/intellicrime-1.jpg';
 import intellicrime2 from '../assets/projects/intellicrime-2.jpg';
 import intellicrime3 from '../assets/projects/intellicrime-3.jpg';
@@ -22,13 +21,12 @@ interface Project {
   col2Image: string;
 }
 
-// Replace each `#` githubUrl with the real GitHub repo URL for that project
 const PROJECTS: Project[] = [
   {
     number: '01',
     name: 'IntelliCrime System',
     category: 'Academic',
-    githubUrl: 'https://github.com/saadisafdar/intellicrime-system', // IntelliCrime System repo URL
+    githubUrl: 'https://github.com/saadisafdar/intellicrime-system',
     col1Images: [intellicrime1, intellicrime2],
     col2Image: intellicrime3,
   },
@@ -36,7 +34,7 @@ const PROJECTS: Project[] = [
     number: '02',
     name: 'LancerLink',
     category: 'Academic',
-    githubUrl: 'https://github.com/saadisafdar/lancerlink', // LancerLink repo URL
+    githubUrl: 'https://github.com/saadisafdar/lancerlink',
     col1Images: [lancerlink1, lancerlink2],
     col2Image: lancerlink3,
   },
@@ -44,7 +42,7 @@ const PROJECTS: Project[] = [
     number: '03',
     name: 'Other Projects/ Personal Projects',
     category: 'Personal',
-    githubUrl: 'https://github.com/saadisafdar?tab=repositories', // UniversalConversionEngine repo URL
+    githubUrl: 'https://github.com/saadisafdar?tab=repositories',
     col1Images: [uce1, uce2],
     col2Image: uce3,
   },
