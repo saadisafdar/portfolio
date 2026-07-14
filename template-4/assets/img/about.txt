@@ -1,2 +1,0 @@
-This is a placeholder for the about section image.
-Replace this with an actual image file named about.jpg
