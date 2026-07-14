@@ -6,33 +6,58 @@ const COURSES = [
   {
     name: 'Coursera',
     label: 'View my certificates',
-    href: '#', // user's Coursera profile URL
+    href: 'https://coursera.org/share/af4e24c3951c129d60e4a0eba503b5da', // user's Coursera profile URL
     Icon: GraduationCap,
+  },
+  {
+    name: 'Google Developers',
+    label: '',
+    href: 'https://g.dev/saadisafdar',
+    Icon: ,
   },
   {
     name: 'Credly',
     label: 'View my badges',
-    href: '#', // user's Credly profile URL
+    href: 'https://www.credly.com/users/saadisafdar', // user's Credly profile URL
     Icon: Award,
   },
   {
     name: 'Microsoft Learn',
     label: 'View my profile',
-    href: '#', // user's Microsoft Learn profile URL
+    href: 'https://learn.microsoft.com/en-us/users/saadisafdar/', // user's Microsoft Learn profile URL
     Icon: BookOpen,
   },
   {
     name: 'Kaggle',
     label: 'View my profile',
-    href: '#', // user's Kaggle profile URL
+    href: 'https://www.kaggle.com/saadisafdar', // user's Kaggle profile URL
     Icon: BarChart3,
   },
   {
-    name: 'DataCamp',
-    label: 'View my profile',
-    href: '#', // user's DataCamp profile URL
-    Icon: Database,
+    name: 'HubSpot',
+    label: '',
+    href: 'https://app-na2.hubspot.com/academy/achievements/754pxvx3/en/1/saadi-safdar/digital-marketing-certified',
+    Icon: ,
   },
+  {
+    name: 'Skilljar Antrophic',
+    label: 'View my Certificate',
+    href: 'https://verify.skilljar.com/c/ey2p2ic7pg6h', // user's DataCamp profile URL
+    Icon: ,
+  },
+  {
+    name: 'Linkedin Learning',
+    label: '',
+    href: 'https://www.linkedin.com/learning/certificates/1ec16043e53de566c12905f41ffab3f96c464fd089f61fcab178ad96b83f2490?trk=share_certificate',
+    Icon: ,
+  },
+  {
+    name: 'Forage',
+    label: '',
+    href: 'https://www.theforage.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_6a01b890ab0622a2db104eed_1781431730387_completion_certificate.pdf',
+    Icon: ,
+  },
+
 ];
 
 export default function CoursesSection() {

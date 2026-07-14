@@ -5,17 +5,17 @@ import FadeIn from '../components/FadeIn';
 const CONTACT_LINKS = [
   {
     name: 'Email',
-    href: 'mailto:#', // user's email address, e.g. mailto:name@example.com
+    href: 'mailto:saadisafder@yahoo.com', // user's email address, e.g. mailto:name@example.com
     Icon: Mail,
   },
   {
     name: 'GitHub',
-    href: '#', // user's GitHub profile URL
+    href: 'https://github.com/saadisafdar', // user's GitHub profile URL
     Icon: Github,
   },
   {
     name: 'LinkedIn',
-    href: '#', // user's LinkedIn profile URL
+    href: 'https://www.linkedin.com/in/saadisafdar/', // user's LinkedIn profile URL
     Icon: Linkedin,
   },
 ];

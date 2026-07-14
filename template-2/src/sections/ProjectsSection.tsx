@@ -3,15 +3,15 @@ import { useRef } from 'react';
 import { Github } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
 // Replace these with the user's real project screenshots
-import intellicrime1 from '../assets/projects/intellicrime-1.png';
-import intellicrime2 from '../assets/projects/intellicrime-2.png';
-import intellicrime3 from '../assets/projects/intellicrime-3.png';
-import lancerlink1 from '../assets/projects/lancerlink-1.png';
-import lancerlink2 from '../assets/projects/lancerlink-2.png';
-import lancerlink3 from '../assets/projects/lancerlink-3.png';
-import uce1 from '../assets/projects/universalconversionengine-1.png';
-import uce2 from '../assets/projects/universalconversionengine-2.png';
-import uce3 from '../assets/projects/universalconversionengine-3.png';
+import intellicrime1 from '../assets/projects/intellicrime-1.jpg';
+import intellicrime2 from '../assets/projects/intellicrime-2.jpg';
+import intellicrime3 from '../assets/projects/intellicrime-3.jpg';
+import lancerlink1 from '../assets/projects/lancerlink-1.jpg';
+import lancerlink2 from '../assets/projects/lancerlink-2.jpg';
+import lancerlink3 from '../assets/projects/lancerlink-3.jpg';
+import uce1 from '../assets/projects/project-1.jpg';
+import uce2 from '../assets/projects/project-2.jpg';
+import uce3 from '../assets/projects/project-3.jpg';
 
 interface Project {
   number: string;
@@ -28,7 +28,7 @@ const PROJECTS: Project[] = [
     number: '01',
     name: 'IntelliCrime System',
     category: 'Academic',
-    githubUrl: '#', // IntelliCrime System repo URL
+    githubUrl: 'https://github.com/saadisafdar/intellicrime-system', // IntelliCrime System repo URL
     col1Images: [intellicrime1, intellicrime2],
     col2Image: intellicrime3,
   },
@@ -36,15 +36,15 @@ const PROJECTS: Project[] = [
     number: '02',
     name: 'LancerLink',
     category: 'Academic',
-    githubUrl: '#', // LancerLink repo URL
+    githubUrl: 'https://github.com/saadisafdar/lancerlink', // LancerLink repo URL
     col1Images: [lancerlink1, lancerlink2],
     col2Image: lancerlink3,
   },
   {
     number: '03',
-    name: 'UniversalConversionEngine',
+    name: 'Other Projects/ Personal Projects',
     category: 'Personal',
-    githubUrl: '#', // UniversalConversionEngine repo URL
+    githubUrl: 'https://github.com/saadisafdar?tab=repositories', // UniversalConversionEngine repo URL
     col1Images: [uce1, uce2],
     col2Image: uce3,
   },
