@@ -1,7 +1,6 @@
 import { Mail, Github, Linkedin } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
 
-// Replace each href with the user's real email address / profile URLs
 const CONTACT_LINKS = [
   {
     name: 'Email',

@@ -1,7 +1,6 @@
 import FadeIn from '../components/FadeIn';
 import Magnet from '../components/Magnet';
 import ContactButton from '../components/ContactButton';
-// Replace with user's own avatar image
 import avatarUrl from '../assets/avatar.png';
 
 const NAV_LINKS = [
@@ -17,21 +16,26 @@ export default function HeroSection() {
       className="relative flex h-screen flex-col"
       style={{ overflowX: 'clip' }}
     >
-      <FadeIn as="nav" delay={0} y={-20}>
-        <div className="flex justify-between px-6 pt-4 md:px-10 md:pt-6">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-sm font-medium uppercase tracking-wider text-[#D7E2EA] transition-opacity duration-200 hover:opacity-70 md:text-lg lg:text-[1.4rem]"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-      </FadeIn>
+      {/* Nav sits above all other layers so clicks always register */}
+      <div className="relative z-20">
+        <FadeIn as="nav" delay={0} y={-20}>
+          <div className="flex justify-between px-6 pt-4 md:px-10 md:pt-6">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-sm font-medium uppercase tracking-wider text-[#D7E2EA] transition-opacity duration-200 hover:opacity-70 md:text-lg lg:text-[1.4rem]"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </FadeIn>
+      </div>
 
-      <div className="overflow-hidden">
+      {/* overflow-hidden clips the giant heading to its container;
+          pointer-events: none prevents the clipping div from blocking nav clicks */}
+      <div className="overflow-hidden" style={{ pointerEvents: 'none' }}>
         <FadeIn delay={0.15} y={40}>
           <h1 className="hero-heading w-full whitespace-nowrap text-center text-[14vw] font-black uppercase leading-none tracking-tight sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw] mt-2 sm:mt-1 md:-mt-6">
             Hi, i&apos;m saadi
@@ -39,6 +43,12 @@ export default function HeroSection() {
         </FadeIn>
       </div>
 
+      {/*
+        Avatar container — sizing/positioning unchanged from spec.
+        The image is a tight head-crop (no neck/shoulders) unlike the original full-body
+        placeholder, so we add padding on the img to recreate the surrounding negative
+        space, and cap max-height so it never overflows the hero viewport.
+      */}
       <div className="absolute left-1/2 top-1/2 z-10 w-[280px] -translate-x-1/2 -translate-y-1/2 sm:top-auto sm:bottom-0 sm:w-[360px] sm:translate-y-0 md:w-[440px] lg:w-[520px]">
         <FadeIn delay={0.6} y={30}>
           <Magnet
@@ -47,7 +57,16 @@ export default function HeroSection() {
             activeTransition="transform 0.3s ease-out"
             inactiveTransition="transform 0.6s ease-in-out"
           >
-            <img src={avatarUrl} alt="Saadi portrait" className="w-full" />
+            <img
+              src={avatarUrl}
+              alt="Saadi portrait"
+              className="w-full"
+              style={{
+                padding: '4% 12% 0',
+                maxHeight: '62vh',
+                objectFit: 'contain',
+              }}
+            />
           </Magnet>
         </FadeIn>
       </div>

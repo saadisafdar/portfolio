@@ -1,63 +1,72 @@
-import { GraduationCap, Award, BookOpen, BarChart3, Database } from 'lucide-react';
+import {
+  GraduationCap,
+  Award,
+  BookOpen,
+  BarChart3,
+  Code2,
+  Megaphone,
+  BrainCircuit,
+  Linkedin,
+  Briefcase,
+} from 'lucide-react';
 import FadeIn from '../components/FadeIn';
+import { CourseHoverEffect } from '../components/CourseHoverEffect';
 
-// Replace each `#` href with the user's real profile URL on that platform
 const COURSES = [
   {
-    name: 'Coursera',
-    label: 'View my certificates',
-    href: 'https://coursera.org/share/af4e24c3951c129d60e4a0eba503b5da', // user's Coursera profile URL
-    Icon: GraduationCap,
+    title: 'Coursera',
+    description: 'View my certificates',
+    link: 'https://coursera.org/share/af4e24c3951c129d60e4a0eba503b5da',
+    icon: <GraduationCap className="h-8 w-8" strokeWidth={1.5} />,
   },
   {
-    name: 'Google Developers',
-    label: '',
-    href: 'https://g.dev/saadisafdar',
-    Icon: ,
+    title: 'Google Developers',
+    description: 'View my Google Developer profile',
+    link: 'https://g.dev/saadisafdar',
+    icon: <Code2 className="h-8 w-8" strokeWidth={1.5} />,
   },
   {
-    name: 'Credly',
-    label: 'View my badges',
-    href: 'https://www.credly.com/users/saadisafdar', // user's Credly profile URL
-    Icon: Award,
+    title: 'Credly',
+    description: 'View my badges',
+    link: 'https://www.credly.com/users/saadisafdar',
+    icon: <Award className="h-8 w-8" strokeWidth={1.5} />,
   },
   {
-    name: 'Microsoft Learn',
-    label: 'View my profile',
-    href: 'https://learn.microsoft.com/en-us/users/saadisafdar/', // user's Microsoft Learn profile URL
-    Icon: BookOpen,
+    title: 'Microsoft Learn',
+    description: 'View my profile',
+    link: 'https://learn.microsoft.com/en-us/users/saadisafdar/',
+    icon: <BookOpen className="h-8 w-8" strokeWidth={1.5} />,
   },
   {
-    name: 'Kaggle',
-    label: 'View my profile',
-    href: 'https://www.kaggle.com/saadisafdar', // user's Kaggle profile URL
-    Icon: BarChart3,
+    title: 'Kaggle',
+    description: 'View my profile',
+    link: 'https://www.kaggle.com/saadisafdar',
+    icon: <BarChart3 className="h-8 w-8" strokeWidth={1.5} />,
   },
   {
-    name: 'HubSpot',
-    label: '',
-    href: 'https://app-na2.hubspot.com/academy/achievements/754pxvx3/en/1/saadi-safdar/digital-marketing-certified',
-    Icon: ,
+    title: 'HubSpot Academy',
+    description: 'Digital Marketing Certified',
+    link: 'https://app-na2.hubspot.com/academy/achievements/754pxvx3/en/1/saadi-safdar/digital-marketing-certified',
+    icon: <Megaphone className="h-8 w-8" strokeWidth={1.5} />,
   },
   {
-    name: 'Skilljar Antrophic',
-    label: 'View my Certificate',
-    href: 'https://verify.skilljar.com/c/ey2p2ic7pg6h', // user's DataCamp profile URL
-    Icon: ,
+    title: 'Anthropic (Skilljar)',
+    description: 'View my Certificate',
+    link: 'https://verify.skilljar.com/c/ey2p2ic7pg6h',
+    icon: <BrainCircuit className="h-8 w-8" strokeWidth={1.5} />,
   },
   {
-    name: 'Linkedin Learning',
-    label: '',
-    href: 'https://www.linkedin.com/learning/certificates/1ec16043e53de566c12905f41ffab3f96c464fd089f61fcab178ad96b83f2490?trk=share_certificate',
-    Icon: ,
+    title: 'LinkedIn Learning',
+    description: 'View my certificate',
+    link: 'https://www.linkedin.com/learning/certificates/1ec16043e53de566c12905f41ffab3f96c464fd089f61fcab178ad96b83f2490?trk=share_certificate',
+    icon: <Linkedin className="h-8 w-8" strokeWidth={1.5} />,
   },
   {
-    name: 'Forage',
-    label: '',
-    href: 'https://www.theforage.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_6a01b890ab0622a2db104eed_1781431730387_completion_certificate.pdf',
-    Icon: ,
+    title: 'Forage',
+    description: 'View my completion certificate',
+    link: 'https://www.theforage.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_6a01b890ab0622a2db104eed_1781431730387_completion_certificate.pdf',
+    icon: <Briefcase className="h-8 w-8" strokeWidth={1.5} />,
   },
-
 ];
 
 export default function CoursesSection() {
@@ -68,42 +77,15 @@ export default function CoursesSection() {
     >
       <FadeIn delay={0} y={40}>
         <h2
-          className="mb-10 text-center font-black uppercase text-[#0C0C0C] sm:mb-12 md:mb-16"
+          className="mb-2 text-center font-black uppercase text-[#0C0C0C] sm:mb-4"
           style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
         >
           Courses
         </h2>
       </FadeIn>
 
-      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {COURSES.map((course, i) => (
-          <FadeIn key={course.name} delay={i * 0.1}>
-            <a
-              href={course.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-full flex-col gap-4 rounded-3xl border p-7 transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.02] sm:p-8"
-              style={{
-                borderColor: 'rgba(12, 12, 12, 0.15)',
-                boxShadow: '0 4px 20px rgba(12, 12, 12, 0.06)',
-              }}
-            >
-              <course.Icon className="h-9 w-9 text-[#0C0C0C]" strokeWidth={1.5} />
-              <span
-                className="font-medium uppercase text-[#0C0C0C]"
-                style={{ fontSize: 'clamp(1rem, 1.8vw, 1.5rem)' }}
-              >
-                {course.name}
-              </span>
-              <span
-                className="font-light text-[#0C0C0C]"
-                style={{ fontSize: 'clamp(0.85rem, 1.3vw, 1.05rem)', opacity: 0.6 }}
-              >
-                {course.label}
-              </span>
-            </a>
-          </FadeIn>
-        ))}
+      <div className="mx-auto max-w-5xl">
+        <CourseHoverEffect items={COURSES} />
       </div>
     </section>
   );
