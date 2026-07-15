@@ -111,6 +111,18 @@ function scrollActive() {
 }
 window.addEventListener('scroll', scrollActive);
 
+/*==================== PORTFOLIO SWIPER ====================*/
+const portfolioSwiper = new Swiper('.portfolio__container', {
+    slidesPerView: 1,
+    spaceBetween: 24,
+    loop: true,
+    pagination: {
+        el: '.swiper-pagination-portfolio',
+        clickable: true,
+    },
+    grabCursor: true
+});
+
 window.addEventListener('scroll', function () {
     const scrollUp = document.getElementById('scroll-up');
     let footer = document.getElementById('footer');
@@ -173,14 +185,26 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
 
-// validate all field in the contact form
-document.getElementById("check").onclick = function () {
-    let allAreFilled = true;
-    document.getElementById("submit_form").querySelectorAll("[required]").forEach(function (i) {
-        if (!allAreFilled) return;
-        if (!i.value) { allAreFilled = false; return; }
-    })
-    if (!allAreFilled) {
-        alert('Fill all the fields');
-    }
-};
+const contactForm = document.getElementById('submit_form');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const name = contactForm.querySelector('[name="name"]').value.trim();
+        const email = contactForm.querySelector('[name="email"]').value.trim();
+        const subject = contactForm.querySelector('[name="subject"]').value.trim();
+        const message = contactForm.querySelector('[name="message"]').value.trim();
+
+        if (!name || !email || !subject || !message) {
+            alert('Please fill out all required fields before sending.');
+            return;
+        }
+
+        const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+        const mailtoLink = `mailto:saadisafdar426@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        window.location.href = mailtoLink;
+    });
+}
+

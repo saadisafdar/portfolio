@@ -76,7 +76,7 @@ Verify all social media links in:
 Current links:
 - LinkedIn: https://www.linkedin.com/in/saadisafdar/
 - GitHub: https://github.com/saadisafdar
-- Twitter/X: https://x.com/saadisafder
+- X: https://x.com/saadisafder
 - Instagram: https://www.instagram.com/saadisafdar/
 - Email: saadisafdar426@gmail.com
 - Phone: +92 345 8578173

@@ -91,7 +91,9 @@
                             <i class="uil uil-github-alt"></i>
                         </a>
                         <a href="https://x.com/saadisafder" target="_blank" class="home__social-icon">
-                            <i class="uil uil-twitter-alt"></i>
+                            <svg class="x-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M18.244 2H21l-6.5 7.44L22 22h-5.8l-4.7-6.14L5.7 22H3l7.0-8.01L2 2h5.9l4.2 5.56L18.244 2Zm-1.01 18h1.1L7.01 4H5.9l11.34 16Z"/>
+                            </svg>
                         </a>
                         <a href="https://www.instagram.com/saadisafdar/" target="_blank" class="home__social-icon">
                             <i class="uil uil-instagram"></i>
@@ -469,6 +471,13 @@
                     <div class="qualification__content qualification__active" data-content id="education">
                         <!--==========================QUALIFICATION 1 ===========================-->
                         <div class="qualification__data">
+                            <div></div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <span class="qualification__line"></span>
+                            </div>
+
                             <div>
                                 <h3 class="qualification__title">B.S. Computer Science</h3>
                                 <span class="qualification__subtitle">
@@ -479,20 +488,10 @@
                                     2024 - Present
                                 </div>
                             </div>
-
-                            <div>
-                                <span class="qualification__rounder"></span>
-                                <span class="qualification__line"></span>
-                            </div>
                         </div>
 
                         <!--===============================QUALIFICATION 2 ===========================-->
                         <div class="qualification__data">
-                            <div></div>
-                            <div>
-                                <span class="qualification__rounder"></span>
-                            </div>
-
                             <div>
                                 <h3 class="qualification__title">Intermediate - Computer Science</h3>
                                 <span class="qualification__subtitle">
@@ -503,10 +502,23 @@
                                     2022 - 2024
                                 </div>
                             </div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <span class="qualification__line"></span>
+                            </div>
+
+                            <div></div>
                         </div>
 
                         <!--===============================QUALIFICATION 3 ===========================-->
                         <div class="qualification__data">
+                            <div></div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                            </div>
+
                             <div>
                                 <h3 class="qualification__title">Matriculation</h3>
                                 <span class="qualification__subtitle">
@@ -516,11 +528,6 @@
                                     <i class="uil uil-calendar-alt"></i>
                                     2020 - 2022
                                 </div>
-                            </div>
-
-                            <div>
-                                <span class="qualification__rounder"></span>
-                                <span class="qualification__line"></span>
                             </div>
                         </div>
                     </div>
@@ -782,7 +789,7 @@
                 <!--===================== Expertise 5 ====================-->
                 <div class="expertise__content">
                     <div>
-                        <i class="uil uil-code expertise__icon"></i>
+                        <i class="uil uil-brackets-curly expertise__icon"></i>
                         <h3 class="expertise__title">Software Engineering</h3>
                         <span class="button button--flex button--small button--link expertise__button">
                             View More
@@ -874,154 +881,149 @@
         </section>
 
         <!--==================== COURSES ====================-->
-        <section class="courses section" id="courses">
+        <section class="portfolio section" id="courses">
             <h2 class="section__title">Courses & Certifications</h2>
             <span class="section__subtitle">My learning journey</span>
 
-            <div class="courses__container container grid">
-                <!--===================== Course 1 ====================-->
-                <div class="courses__content">
-                    <div class="courses__header">
-                        <i class="uil uil-graduation-cap courses__icon"></i>
-                        <h3 class="courses__title">Coursera</h3>
-                        <span class="button button--flex button--small button--link courses__button">
-                            <a href="https://coursera.org/share/af4e24c3951c129d60e4a0eba503b5da" target="_blank" style="color: inherit; text-decoration: none;">
+            <div class="portfolio__container container swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="portfolio__content grid swiper-slide">
+                        <img src="assets/img/courses/coursera.png" alt="Coursera" class="portfolio__img" loading="lazy">
+
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">Coursera</h3>
+                            <p class="portfolio__description">
+                                Completed multiple courses in data science, machine learning, and web development with a strong focus on practical learning.
+                            </p>
+                            <a href="https://coursera.org/share/af4e24c3951c129d60e4a0eba503b5da" class="button button--flex button--small portfolio__button" target="_blank" rel="noopener noreferrer">
                                 View Certificate
+                                <i class="uil uil-arrow-right button__icon"></i>
                             </a>
-                        </span>
+                        </div>
                     </div>
-                    <p class="courses__description">
-                        Completed various courses on data science, machine learning, and web development.
-                    </p>
-                </div>
 
-                <!--===================== Course 2 ====================-->
-                <div class="courses__content">
-                    <div class="courses__header">
-                        <i class="uil uil-code courses__icon"></i>
-                        <h3 class="courses__title">Google Developers</h3>
-                        <span class="button button--flex button--small button--link courses__button">
-                            <a href="https://g.dev/saadisafdar" target="_blank" style="color: inherit; text-decoration: none;">
+                    <div class="portfolio__content grid swiper-slide">
+                        <img src="assets/img/courses/google-developers.png" alt="Google Developers" class="portfolio__img" loading="lazy">
+
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">Google Developers</h3>
+                            <p class="portfolio__description">
+                                Google Developer profile showcasing projects, achievements, and active participation in the development ecosystem.
+                            </p>
+                            <a href="https://g.dev/saadisafdar" class="button button--flex button--small portfolio__button" target="_blank" rel="noopener noreferrer">
                                 View Profile
+                                <i class="uil uil-arrow-right button__icon"></i>
                             </a>
-                        </span>
+                        </div>
                     </div>
-                    <p class="courses__description">
-                        Google Developer profile showcasing my projects and achievements.
-                    </p>
-                </div>
 
-                <!--===================== Course 3 ====================-->
-                <div class="courses__content">
-                    <div class="courses__header">
-                        <i class="uil uil-award courses__icon"></i>
-                        <h3 class="courses__title">Credly</h3>
-                        <span class="button button--flex button--small button--link courses__button">
-                            <a href="https://www.credly.com/users/saadisafdar" target="_blank" style="color: inherit; text-decoration: none;">
+                    <div class="portfolio__content grid swiper-slide">
+                        <img src="assets/img/courses/credly.png" alt="Credly" class="portfolio__img" loading="lazy">
+
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">Credly</h3>
+                            <p class="portfolio__description">
+                                Verified badges and credentials earned through professional learning platforms and hands-on training programs.
+                            </p>
+                            <a href="https://www.credly.com/users/saadisafdar" class="button button--flex button--small portfolio__button" target="_blank" rel="noopener noreferrer">
                                 View Badges
+                                <i class="uil uil-arrow-right button__icon"></i>
                             </a>
-                        </span>
+                        </div>
                     </div>
-                    <p class="courses__description">
-                        Collection of professional certifications and badges earned through various learning platforms.
-                    </p>
-                </div>
 
-                <!--===================== Course 4 ====================-->
-                <div class="courses__content">
-                    <div class="courses__header">
-                        <i class="uil uil-book-open courses__icon"></i>
-                        <h3 class="courses__title">Microsoft Learn</h3>
-                        <span class="button button--flex button--small button--link courses__button">
-                            <a href="https://learn.microsoft.com/en-us/users/saadisafdar/" target="_blank" style="color: inherit; text-decoration: none;">
+                    <div class="portfolio__content grid swiper-slide">
+                        <img src="assets/img/courses/microsoft-learn.png" alt="Microsoft Learn" class="portfolio__img" loading="lazy">
+
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">Microsoft Learn</h3>
+                            <p class="portfolio__description">
+                                Learning path certifications in Azure, AI, and cloud technologies with hands-on knowledge-building.
+                            </p>
+                            <a href="https://learn.microsoft.com/en-us/users/saadisafdar/" class="button button--flex button--small portfolio__button" target="_blank" rel="noopener noreferrer">
                                 View Profile
+                                <i class="uil uil-arrow-right button__icon"></i>
                             </a>
-                        </span>
+                        </div>
                     </div>
-                    <p class="courses__description">
-                        Microsoft learning profile with certifications in Azure, AI, and cloud technologies.
-                    </p>
-                </div>
 
-                <!--===================== Course 5 ====================-->
-                <div class="courses__content">
-                    <div class="courses__header">
-                        <i class="uil uil-chart-bar courses__icon"></i>
-                        <h3 class="courses__title">Kaggle</h3>
-                        <span class="button button--flex button--small button--link courses__button">
-                            <a href="https://www.kaggle.com/saadisafdar" target="_blank" style="color: inherit; text-decoration: none;">
+                    <div class="portfolio__content grid swiper-slide">
+                        <img src="assets/img/courses/kaggle.png" alt="Kaggle" class="portfolio__img" loading="lazy">
+
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">Kaggle</h3>
+                            <p class="portfolio__description">
+                                Data science competitions and practical projects completed on the Kaggle platform to strengthen real-world skills.
+                            </p>
+                            <a href="https://www.kaggle.com/saadisafdar" class="button button--flex button--small portfolio__button" target="_blank" rel="noopener noreferrer">
                                 View Profile
+                                <i class="uil uil-arrow-right button__icon"></i>
                             </a>
-                        </span>
+                        </div>
                     </div>
-                    <p class="courses__description">
-                        Data science competitions and projects on the Kaggle platform.
-                    </p>
+
+                    <div class="portfolio__content grid swiper-slide">
+                        <img src="assets/img/courses/hubspot.png" alt="HubSpot Academy" class="portfolio__img" loading="lazy">
+
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">HubSpot Academy</h3>
+                            <p class="portfolio__description">
+                                Digital marketing certification combining strategic thinking with practical implementation and campaign awareness.
+                            </p>
+                            <a href="https://app-na2.hubspot.com/academy/achievements/754pxvx3/en/1/saadi-safdar/digital-marketing-certified" class="button button--flex button--small portfolio__button" target="_blank" rel="noopener noreferrer">
+                                View Certificate
+                                <i class="uil uil-arrow-right button__icon"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="portfolio__content grid swiper-slide">
+                        <img src="assets/img/courses/anthropic.png" alt="Anthropic Skilljar" class="portfolio__img" loading="lazy">
+
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">Anthropic (Skilljar)</h3>
+                            <p class="portfolio__description">
+                                Certification in AI and machine learning earned through Anthropic Skilljar with a focus on practical understanding.
+                            </p>
+                            <a href="https://verify.skilljar.com/c/ey2p2ic7pg6h" class="button button--flex button--small portfolio__button" target="_blank" rel="noopener noreferrer">
+                                View Certificate
+                                <i class="uil uil-arrow-right button__icon"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="portfolio__content grid swiper-slide">
+                        <img src="assets/img/courses/linkedin-learning.png" alt="LinkedIn Learning" class="portfolio__img" loading="lazy">
+
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">LinkedIn Learning</h3>
+                            <p class="portfolio__description">
+                                Professional courses and learning paths focused on modern development practices and career growth.
+                            </p>
+                            <a href="https://www.linkedin.com/learning/certificates/1ec16043e53de566c12905f41ffab3f96c464fd089f61fcab178ad96b83f2490?trk=share_certificate" class="button button--flex button--small portfolio__button" target="_blank" rel="noopener noreferrer">
+                                View Courses
+                                <i class="uil uil-arrow-right button__icon"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="portfolio__content grid swiper-slide">
+                        <img src="assets/img/courses/forage.png" alt="Forage" class="portfolio__img" loading="lazy">
+
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">Forage</h3>
+                            <p class="portfolio__description">
+                                Practical virtual experience programs that build real-world confidence through guided project work.
+                            </p>
+                            <a href="https://www.theforage.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_6a01b890ab0622a2db104eed_1781431730387_completion_certificate.pdf" class="button button--flex button--small portfolio__button" target="_blank" rel="noopener noreferrer">
+                                View Experience
+                                <i class="uil uil-arrow-right button__icon"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <!--===================== Course 6 ====================-->
-                <div class="courses__content">
-                    <div class="courses__header">
-                        <i class="uil uil-megaphone courses__icon"></i>
-                        <h3 class="courses__title">HubSpot Academy</h3>
-                        <span class="button button--flex button--small button--link courses__button">
-                            <a href="https://app-na2.hubspot.com/academy/achievements/754pxvx3/en/1/saadi-safdar/digital-marketing-certified" target="_blank" style="color: inherit; text-decoration: none;">
-                                View Certificate
-                            </a>
-                        </span>
-                    </div>
-                    <p class="courses__description">
-                        Digital Marketing Certified - Completed comprehensive digital marketing training.
-                    </p>
-                </div>
-
-                <!--===================== Course 7 ====================-->
-                <div class="courses__content">
-                    <div class="courses__header">
-                        <i class="uil uil-brain courses__icon"></i>
-                        <h3 class="courses__title">Anthropic (Skilljar)</h3>
-                        <span class="button button--flex button--small button--link courses__button">
-                            <a href="https://verify.skilljar.com/c/ey2p2ic7pg6h" target="_blank" style="color: inherit; text-decoration: none;">
-                                View Certificate
-                            </a>
-                        </span>
-                    </div>
-                    <p class="courses__description">
-                        AI and machine learning certification from Anthropic through Skilljar.
-                    </p>
-                </div>
-
-                <!--===================== Course 8 ====================-->
-                <div class="courses__content">
-                    <div class="courses__header">
-                        <i class="uil uil-linkedin courses__icon"></i>
-                        <h3 class="courses__title">LinkedIn Learning</h3>
-                        <span class="button button--flex button--small button--link courses__button">
-                            <a href="https://www.linkedin.com/learning/certificates/1ec16043e53de566c12905f41ffab3f96c464fd089f61fcab178ad96b83f2490?trk=share_certificate" target="_blank" style="color: inherit; text-decoration: none;">
-                                View Certificate
-                            </a>
-                        </span>
-                    </div>
-                    <p class="courses__description">
-                        Professional development courses and certifications on LinkedIn Learning.
-                    </p>
-                </div>
-
-                <!--===================== Course 9 ====================-->
-                <div class="courses__content">
-                    <div class="courses__header">
-                        <i class="uil uil-briefcase courses__icon"></i>
-                        <h3 class="courses__title">Forage</h3>
-                        <span class="button button--flex button--small button--link courses__button">
-                            <a href="https://www.theforage.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_6a01b890ab0622a2db104eed_1781431730387_completion_certificate.pdf" target="_blank" style="color: inherit; text-decoration: none;">
-                                View Certificate
-                            </a>
-                        </span>
-                    </div>
-                    <p class="courses__description">
-                        Virtual work experience programs completed through Forage platform.
-                    </p>
-                </div>
+                <div class="swiper-pagination swiper-pagination-portfolio"></div>
             </div>
         </section>
 
@@ -1032,12 +1034,50 @@
 
             <div class="contact__container container grid">
                 <div>
-                    <div class="contact__information">
-                        <i class="uil uil-phone contact__icon"></i>
+                        <div class="contact__information">
+                        <i class="uil uil-linkedin-alt contact__icon"></i>
                         
                         <div>
-                            <h3 class="contact__title">Call Me</h3>
-                            <span class="contact__subtitle">+92 345 8578173</span>
+                            <h3 class="contact__title">LinkedIn</h3>
+                            <span class="contact__subtitle"><a href="https://www.linkedin.com/in/saadisafdar/" target="_blank">@saadisafdar</a></span>
+                        </div>
+                    </div>
+
+                    <div class="contact__information">
+                        <i class="uil uil-github-alt contact__icon"></i>
+                        
+                        <div>
+                            <h3 class="contact__title">GitHub</h3>
+                            <span class="contact__subtitle"><a href="https://github.com/saadisafdar" target="_blank">@saadisafdar</a></span>
+                        </div>
+                    </div>
+
+                    <div class="contact__information">
+                        <i class="uil uil-facebook contact__icon"></i>
+                        
+                        <div>
+                            <h3 class="contact__title">Facebook</h3>
+                            <span class="contact__subtitle"><a href="https://www.facebook.com/saadisafdar1" target="_blank">@saadisafdar1</a></span>
+                        </div>
+                    </div>
+
+                    <div class="contact__information">
+                        <i class="uil uil-instagram contact__icon"></i>
+                        
+                        <div>
+                            <h3 class="contact__title">Instagram</h3>
+                            <span class="contact__subtitle"><a href="https://www.instagram.com/saadisafdar/" target="_blank">@saadisafdar</a></span>
+                        </div>
+                    </div>
+
+                    <div class="contact__information">
+                        <svg class="x-icon contact__icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18.244 2H21l-6.5 7.44L22 22h-5.8l-4.7-6.14L5.7 22H3l7.0-8.01L2 2h5.9l4.2 5.56L18.244 2Zm-1.01 18h1.1L7.01 4H5.9l11.34 16Z"/>
+                        </svg>
+                        
+                        <div>
+                            <h3 class="contact__title">X</h3>
+                            <span class="contact__subtitle"><a href="https://x.com/saadisafder" target="_blank">@saadisafder</a></span>
                         </div>
                     </div>
 
@@ -1100,6 +1140,18 @@
                 </div>
                 <ul class="footer__links">
                     <li>
+                        <a href="#home" class="footer__link">Home</a>
+                    </li>
+                    <li>
+                        <a href="#about" class="footer__link">About</a>
+                    </li>
+                    <li>
+                        <a href="#skills" class="footer__link">Skills</a>
+                    </li>
+                    <li>
+                        <a href="#qualifications" class="footer__link">Qualifications</a>
+                    </li>
+                    <li>
                         <a href="#expertise" class="footer__link">Expertise</a>
                     </li>
                     <li>
@@ -1118,16 +1170,18 @@
                         <i class="uil uil-github-alt"></i>
                     </a>
                     <a href="https://x.com/saadisafder" target="_blank" class="footer__social">
-                        <i class="uil uil-twitter-alt"></i>
+                        <svg class="x-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18.244 2H21l-6.5 7.44L22 22h-5.8l-4.7-6.14L5.7 22H3l7.0-8.01L2 2h5.9l4.2 5.56L18.244 2Zm-1.01 18h1.1L7.01 4H5.9l11.34 16Z"/>
+                        </svg>
                     </a>
                     <a href="https://www.instagram.com/saadisafdar/" target="_blank" class="footer__social">
                         <i class="uil uil-instagram"></i>
                     </a>
                 </div>
             </div>
-        </div>
-        <div class="footer__copy">
-            &#169; 2025 Saadi Safdar. All rights reserved.
+            <div class="footer__copy">
+                &#169; 2025 Saadi Safdar. All rights reserved.
+            </div>
         </div>
     </footer>
 
@@ -1138,7 +1192,6 @@
 
     <!--==================== SWIPER JS ====================-->
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-    
     <!--==================== MAIN JS ====================-->
     <script src="assets/js/main.js"></script>
 </body>
