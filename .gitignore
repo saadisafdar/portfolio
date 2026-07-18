@@ -4,7 +4,6 @@
 __pycache__/
 *.o
 *.obj
-dist/
 build/
 target/
 *.class
@@ -12,7 +11,6 @@ target/
 *.dll
 *.so
 *.a
-*.out
 
 # Dependencies
 .venv/
@@ -21,7 +19,6 @@ node_modules/
 .julia/
 zig*/
 .jest/
-.nyc_output/
 .mypy_cache/
 .pytest_cache/
 .coverage
@@ -108,7 +105,6 @@ jspm_packages/
 .yarn-integrity
 .yarn/
 .cache/
-.nyc_output/
 
 # Java specific
 *.class
@@ -131,7 +127,6 @@ hs_err_pid*
 *.obj
 *.lib
 *.exe
-*.out
 *.ilk
 *.pdb
 *.sdf
@@ -212,7 +207,6 @@ docs/_build/
 *.so
 *.egg
 *.egg-info/
-dist/
 build/
 develop-eggs/
 .installed.cfg
@@ -485,7 +479,6 @@ tmp/
 .tern-port
 .terraform/
 .threadsdb3
-.tmp-output/
 .tmuxomatic
 .tool-versions
 .travis.yml
