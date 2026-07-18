@@ -1,21 +1,11 @@
 'use client';
 
 import { motion } from 'motion/react';
+import Image from 'next/image';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import ErrorBoundary from '@/components/ui/error-boundary';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { MapPin, GraduationCap, Code2, Brain, Database, Wrench, Cloud } from 'lucide-react';
+import { MapPin, GraduationCap } from 'lucide-react';
 import portfolioData from '@/data/portfolio.json';
-
-const skillCategories = [
-  { label: 'Languages', icon: Code2, skills: portfolioData.skills.languages },
-  { label: 'Frontend', icon: Code2, skills: portfolioData.skills.frontend },
-  { label: 'Backend', icon: Database, skills: portfolioData.skills.backend },
-  { label: 'AI / ML', icon: Brain, skills: portfolioData.skills.ai },
-  { label: 'Tools', icon: Wrench, skills: portfolioData.skills.tools },
-  { label: 'Cloud', icon: Cloud, skills: portfolioData.skills.cloud },
-];
 
 export default function AboutSection() {
   return (
@@ -24,7 +14,7 @@ export default function AboutSection() {
         <ErrorBoundary>
           <ScrollReveal direction="up">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              About <span className="text-primary">Me</span>
+              About <span className="text-primary font-[family-name:var(--font-script)] text-4xl md:text-5xl">Me</span>
             </h2>
             <div className="w-16 h-1 bg-primary rounded-full mb-8" />
           </ScrollReveal>
@@ -34,7 +24,7 @@ export default function AboutSection() {
           <ErrorBoundary>
             <ScrollReveal direction="left" delay={0.2}>
               <p className="text-muted-foreground leading-relaxed text-lg mb-6">
-                {portfolioData.personal.description}
+                I&apos;m a BSc Computer Science student at the University of Wah (2024–2028), based in Wah Cantt, Pakistan. I build both academic team projects and independent personal projects, working across the full stack — from database design and backend APIs to responsive frontends and AI-powered features. I also work with AI coding agents as part of my development workflow, using them to accelerate prototyping, debug complex issues, and explore new approaches to problems.
               </p>
 
               <div className="flex flex-col gap-3 text-sm">
@@ -60,27 +50,30 @@ export default function AboutSection() {
 
           <ErrorBoundary>
             <ScrollReveal direction="right" delay={0.4}>
-              <div className="space-y-4">
-                {skillCategories.map((cat, i) => (
-                  <ScrollReveal key={cat.label} direction="right" delay={0.1 * i}>
-                    <Card className="border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-300 group">
-                      <CardContent className="p-4">
-                        <div className="flex items-center gap-2 mb-3">
-                          <cat.icon size={16} className="text-primary group-hover:scale-110 transition-transform" />
-                          <span className="font-medium text-sm">{cat.label}</span>
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                          {cat.skills.map((skill) => (
-                            <Badge key={skill} variant="secondary" className="text-xs hover:bg-primary/20 hover:text-primary transition-colors cursor-default">
-                              {skill}
-                            </Badge>
-                          ))}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </ScrollReveal>
-                ))}
-              </div>
+              <motion.div
+                className="relative mx-auto w-full max-w-sm"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                <div className="relative rounded-2xl overflow-hidden border border-border/50 bg-card/50 backdrop-blur-sm aspect-square">
+                  <Image
+                    src="/images/profile.jpg"
+                    alt="Saadi Safdar"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 384px"
+                    priority={false}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+                </div>
+                <p className="text-center mt-4 text-muted-foreground text-sm font-[family-name:var(--font-handwritten)] text-lg">
+                  &mdash; always curious, always building
+                </p>
+                <div className="absolute -bottom-3 -right-3 w-24 h-24 bg-primary/10 rounded-full blur-2xl" />
+                <div className="absolute -top-3 -left-3 w-16 h-16 bg-primary/10 rounded-full blur-xl" />
+              </motion.div>
             </ScrollReveal>
           </ErrorBoundary>
         </div>

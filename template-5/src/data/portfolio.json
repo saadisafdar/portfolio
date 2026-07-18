@@ -131,5 +131,23 @@
     "ai": ["NumPy", "Pandas", "Matplotlib", "OpenCV", "Scikit-learn", "TensorFlow", "PyTorch"],
     "tools": ["VS Code", "GitHub", "Git", "Docker", "Jupyter Notebook", "Postman"],
     "cloud": ["Vercel", "Firebase", "Netlify", "Render", "Google Cloud"]
-  }
+  },
+  "education": [
+    {
+      "institution": "University of Wah",
+      "degree": "B.S. Computer Science",
+      "period": "2024 — Present"
+    },
+    {
+      "institution": "F.G Degree College For Men, Wah",
+      "degree": "Intermediate — Computer Science",
+      "period": "2022 — 2024"
+    },
+    {
+      "institution": "Punjab Public Secondary School",
+      "degree": "Matriculation",
+      "period": "2020 — 2022"
+    }
+  ],
+  "experience": []
 }

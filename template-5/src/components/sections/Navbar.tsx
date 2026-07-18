@@ -2,13 +2,16 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
   { label: 'About', href: '#about' },
+  { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
   { label: 'Courses', href: '#courses' },
+  { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -34,8 +37,15 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="font-bold text-lg tracking-tight">
-          <span className="text-primary">S</span>aadi
+        <a href="#" className="flex items-center">
+          <Image
+            src="/images/saadi.svg"
+            alt="Saadi"
+            width={120}
+            height={36}
+            className="h-8 w-auto"
+            priority
+          />
         </a>
 
         {/* Desktop */}

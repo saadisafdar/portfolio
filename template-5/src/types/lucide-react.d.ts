@@ -16,4 +16,9 @@ declare module 'lucide-react' {
   export const Send: FC<SVGProps<SVGSVGElement> & { size?: number }>;
   export const Menu: FC<SVGProps<SVGSVGElement> & { size?: number }>;
   export const X: FC<SVGProps<SVGSVGElement> & { size?: number }>;
+  export const Calendar: FC<SVGProps<SVGSVGElement> & { size?: number }>;
+  export const Briefcase: FC<SVGProps<SVGSVGElement> & { size?: number }>;
+  export const Layout: FC<SVGProps<SVGSVGElement> & { size?: number }>;
+  export const Grid: FC<SVGProps<SVGSVGElement> & { size?: number }>;
+  export const Clock: FC<SVGProps<SVGSVGElement> & { size?: number }>;
 }

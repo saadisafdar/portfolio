@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Anton, Sacramento, Caveat, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -9,6 +9,29 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const anton = Anton({
+  weight: "400",
+  variable: "--font-anton",
+  subsets: ["latin"],
+});
+
+const sacramento = Sacramento({
+  weight: "400",
+  variable: "--font-sacramento",
+  subsets: ["latin"],
+});
+
+const caveat = Caveat({
+  weight: "400",
+  variable: "--font-caveat",
+  subsets: ["latin"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains",
   subsets: ["latin"],
 });
 
@@ -26,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${anton.variable} ${sacramento.variable} ${caveat.variable} ${jetbrainsMono.variable} antialiased`}
       >
         {children}
       </body>

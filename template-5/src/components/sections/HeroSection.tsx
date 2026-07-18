@@ -10,6 +10,10 @@ import TwitterXIcon from '@/icons/twitter-x-icon';
 import InstagramIcon from '@/icons/instagram-icon';
 import DiscordIcon from '@/icons/discord-icon';
 import FacebookIcon from '@/icons/facebook-icon';
+import BrandThreadsIcon from '@/icons/brand-threads-icon';
+import YoutubeIcon from '@/icons/youtube-icon';
+import TiktokIcon from '@/icons/tiktok-icon';
+import RedditIcon from '@/icons/reddit-icon';
 import { ArrowDown } from 'lucide-react';
 
 export default function HeroSection() {
@@ -33,7 +37,7 @@ export default function HeroSection() {
         >
           <ErrorBoundary>
             <motion.p
-              className="text-primary text-sm font-mono tracking-widest uppercase mb-4"
+              className="text-primary text-sm font-[family-name:var(--font-jetbrains)] tracking-widest uppercase mb-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -50,7 +54,7 @@ export default function HeroSection() {
                 direction="top"
                 delay={80}
                 stepDuration={0.4}
-                className="inline text-foreground"
+                className="inline text-foreground font-[family-name:var(--font-display)]"
               />
               <BlurText
                 text="Saadi"
@@ -58,7 +62,7 @@ export default function HeroSection() {
                 direction="top"
                 delay={80}
                 stepDuration={0.4}
-                className="inline text-primary"
+                className="inline text-primary font-[family-name:var(--font-display)] bg-gradient-to-r from-primary to-emerald-300 bg-clip-text"
               />
             </h1>
           </ErrorBoundary>
@@ -116,6 +120,10 @@ export default function HeroSection() {
                 { icon: InstagramIcon, href: 'https://www.instagram.com/saadisafdar/', label: 'Instagram' },
                 { icon: DiscordIcon, href: 'https://discord.com/users/saadisafdar', label: 'Discord' },
                 { icon: FacebookIcon, href: 'https://www.facebook.com/saadisafdar1', label: 'Facebook' },
+                { icon: BrandThreadsIcon, href: 'https://www.threads.com/@saadisafdar', label: 'Threads' },
+                { icon: YoutubeIcon, href: 'https://www.youtube.com/@Fur_And_Funny', label: 'YouTube' },
+                { icon: TiktokIcon, href: 'https://www.tiktok.com/@saadisafdar', label: 'TikTok' },
+                { icon: RedditIcon, href: 'https://www.reddit.com/user/Efficient-Word1384/', label: 'Reddit' },
               ].map((social, i) => (
                 <motion.a
                   key={social.label}
