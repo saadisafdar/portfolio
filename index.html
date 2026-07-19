@@ -17,20 +17,19 @@
         }
 
         body {
-            background-color: #0a0a0f;
+            background-color: #f5f0e8;
             color: #000;
             font-family: 'Space Mono', monospace;
             padding: 40px 20px;
             min-height: 100vh;
         }
 
-        /* Warp tunnel canvas — sits behind everything */
-        #warp-bg {
+        /* Flickering grid canvas — sits behind everything */
+        #flicker-bg {
             position: fixed;
             inset: 0;
             z-index: -1;
-            width: 100%;
-            height: 100%;
+            pointer-events: none;
             display: block;
         }
 
@@ -45,10 +44,9 @@
             font-size: 48px;
             font-weight: 900;
             letter-spacing: 2px;
-            color: #ffffff;
+            color: #000;
             margin-bottom: 0;
             text-transform: uppercase;
-            text-shadow: 0 2px 16px rgba(0,0,0,0.7);
         }
 
         .header p {
@@ -191,8 +189,8 @@
             text-align: center;
             margin-top: 60px;
             padding-top: 30px;
-            border-top: 3px solid rgba(255,255,255,0.15);
-            color: rgba(255,255,255,0.5);
+            border-top: 3px solid #333;
+            color: #666;
             font-size: 13px;
             letter-spacing: 0.5px;
         }
@@ -228,8 +226,8 @@
     </style>
 </head>
 <body>
-    <!-- Warp tunnel background -->
-    <canvas id="warp-bg" aria-hidden="true"></canvas>
+    <!-- Flickering grid background -->
+    <canvas id="flicker-bg" aria-hidden="true"></canvas>
     <div class="container">
         <!-- Header -->
         <div class="header">
@@ -285,135 +283,143 @@
     (function () {
         'use strict';
 
-        var canvas = document.getElementById('warp-bg');
-        var ctx    = canvas.getContext('2d');
-        var rafId  = null;
-
         /* ── tunables ── */
-        var BG_COLOR   = '#0a0a0f';
-        var GRID_COLOR = 'rgba(60, 80, 120, 0.55)';
-        var CELL       = 60;          // grid cell size in px (world space)
-        var VP_Y_FRAC  = 0.42;        // vanishing point vertical position (fraction of height)
-        var SPEED      = 0.4;         // grid scroll speed (px/frame in world space)
-        var BEAM_COUNT = 5;
+        var SQUARE_SIZE    = 4;     // px (logical)
+        var GRID_GAP       = 6;     // px (logical)
+        var FLICKER_CHANCE = 0.3;   // probability weight per second per square
+        var MAX_OPACITY    = 0.2;   // max square opacity (low = subtle texture)
+        var COLOR_R        = 0;
+        var COLOR_G        = 0;
+        var COLOR_B        = 0;     // black squares on cream bg
 
-        /* ── beam definitions (created once) ── */
-        var beams = (function () {
-            var list = [];
-            var hues = [200, 280, 160, 320, 40]; // cyan-blue, purple, green, pink, amber
-            for (var i = 0; i < BEAM_COUNT; i++) {
-                list.push({
-                    hue:      hues[i % hues.length],
-                    xFrac:    0.1 + (i / BEAM_COUNT) * 0.8,  // spread across width
-                    yFrac:    Math.random(),                  // phase offset
-                    duration: 2.8 + Math.random() * 1.6,     // seconds for one pass
-                    width:    6 + Math.random() * 6,         // px
-                    height:   0.18 + Math.random() * 0.14    // fraction of screen height
-                });
+        /* ── state ── */
+        var canvas   = document.getElementById('flicker-bg');
+        var ctx      = canvas.getContext('2d');
+        var rafId    = null;
+        var isInView = true;  // start optimistically; IO corrects immediately
+        var grid     = null;  // { cols, rows, squares, dpr }
+        var lastTime = 0;
+        var resizeTimer = null;
+
+        /* ── build/rebuild grid ── */
+        function setupGrid() {
+            var dpr  = window.devicePixelRatio || 1;
+            var W    = window.innerWidth;
+            var H    = window.innerHeight;
+
+            /* size the canvas backing store */
+            canvas.width        = Math.round(W * dpr);
+            canvas.height       = Math.round(H * dpr);
+            canvas.style.width  = W + 'px';
+            canvas.style.height = H + 'px';
+
+            var cols    = Math.floor(W / (SQUARE_SIZE + GRID_GAP));
+            var rows    = Math.floor(H / (SQUARE_SIZE + GRID_GAP));
+            var squares = new Float32Array(cols * rows);
+            for (var i = 0; i < squares.length; i++) {
+                squares[i] = Math.random() * MAX_OPACITY;
             }
-            return list;
-        }());
-
-        /* ── resize handler ── */
-        function resize() {
-            canvas.width  = window.innerWidth;
-            canvas.height = window.innerHeight;
+            grid = { cols: cols, rows: rows, squares: squares, dpr: dpr };
         }
 
-        /* ── draw one frame ── */
-        var offset = 0; // scrolling offset for grid
-        var last   = null;
-
-        function draw(ts) {
-            if (last === null) last = ts;
-            var dt = (ts - last) / 1000; // seconds
-            last = ts;
-
-            var W  = canvas.width;
-            var H  = canvas.height;
-            var vx = W / 2;
-            var vy = H * VP_Y_FRAC;
-
-            /* background fill */
-            ctx.fillStyle = BG_COLOR;
-            ctx.fillRect(0, 0, W, H);
-
-            /* ── perspective grid ── */
-            ctx.save();
-            ctx.strokeStyle = GRID_COLOR;
-            ctx.lineWidth   = 0.8;
-
-            /* advance the scrolling offset */
-            offset = (offset + SPEED) % CELL;
-
-            /* Horizontal lines (receding toward vp) */
-            var hLines = 18;
-            for (var r = 0; r <= hLines; r++) {
-                /* map rows evenly from bottom of screen up to just past vp */
-                var t  = r / hLines;                            // 0 = bottom, 1 = near-vp
-                /* add scrolling: shift t slightly and wrap */
-                var tOff = ((t + (offset / CELL) / hLines) % 1);
-                /* perspective: lines bunch up near vp */
-                var yWorld = vy + (H - vy) * Math.pow(1 - tOff, 2.2);
-
-                ctx.beginPath();
-                /* line extends from left-of-screen to right */
-                var xLeft  = vx + (0 - vx) * ((yWorld - vy) / (H - vy));
-                var xRight = vx + (W - vx) * ((yWorld - vy) / (H - vy));
-                ctx.moveTo(xLeft,  yWorld);
-                ctx.lineTo(xRight, yWorld);
-                ctx.stroke();
+        /* ── update opacities (delta-time scaled so FPS-independent) ── */
+        function updateSquares(dt) {
+            var sq  = grid.squares;
+            var len = sq.length;
+            var p   = FLICKER_CHANCE * dt;  // expected fraction to flip this frame
+            for (var i = 0; i < len; i++) {
+                if (Math.random() < p) {
+                    sq[i] = Math.random() * MAX_OPACITY;
+                }
             }
-
-            /* Vertical lines (radiating from vp to bottom edge) */
-            var vLines = 14;
-            for (var c = 0; c <= vLines; c++) {
-                var xFrac = c / vLines;          // 0 = left edge, 1 = right edge
-                var xBot  = xFrac * W;
-                ctx.beginPath();
-                ctx.moveTo(vx,   vy);
-                ctx.lineTo(xBot, H);
-                ctx.stroke();
-            }
-
-            ctx.restore();
-
-            /* ── beams ── */
-            for (var b = 0; b < beams.length; b++) {
-                var bm   = beams[b];
-                /* phase cycles 0→1 over duration seconds */
-                bm.yFrac = (bm.yFrac + dt / bm.duration) % 1;
-
-                var bx = bm.xFrac * W;
-                var bh = bm.height * H;
-                /* travel from bottom+bh up to -bh */
-                var by = H + bh - bm.yFrac * (H + 2 * bh);
-
-                var grad = ctx.createLinearGradient(bx, by + bh, bx, by);
-                grad.addColorStop(0, 'hsla(' + bm.hue + ', 90%, 65%, 0)');
-                grad.addColorStop(0.3, 'hsla(' + bm.hue + ', 90%, 65%, 0.55)');
-                grad.addColorStop(0.7, 'hsla(' + bm.hue + ', 90%, 65%, 0.55)');
-                grad.addColorStop(1, 'hsla(' + bm.hue + ', 90%, 65%, 0)');
-
-                ctx.save();
-                ctx.fillStyle = grad;
-                /* soft glow: draw a narrow rectangle */
-                ctx.fillRect(bx - bm.width / 2, by, bm.width, bh);
-                ctx.restore();
-            }
-
-            rafId = requestAnimationFrame(draw);
         }
 
-        /* ── init ── */
-        resize();
-        window.addEventListener('resize', resize);
-        rafId = requestAnimationFrame(draw);
+        /* ── render the grid ── */
+        function drawGrid() {
+            var g   = grid;
+            var dpr = g.dpr;
+            var W   = canvas.width;
+            var H   = canvas.height;
+            var step = (SQUARE_SIZE + GRID_GAP) * dpr;
+            var sqPx = SQUARE_SIZE * dpr;
 
-        /* cancel loop on unload to avoid ghost loops */
+            ctx.clearRect(0, 0, W, H);
+
+            for (var col = 0; col < g.cols; col++) {
+                for (var row = 0; row < g.rows; row++) {
+                    var opacity = g.squares[col * g.rows + row];
+                    ctx.fillStyle = 'rgba(' + COLOR_R + ',' + COLOR_G + ',' + COLOR_B + ',' + opacity + ')';
+                    ctx.fillRect(
+                        col * step,
+                        row * step,
+                        sqPx,
+                        sqPx
+                    );
+                }
+            }
+        }
+
+        /* ── animation loop ── */
+        function animate(ts) {
+            if (!isInView) {
+                /* visibility lost — stop loop; IO will restart it */
+                rafId = null;
+                return;
+            }
+
+            var dt = lastTime === 0 ? 0 : (ts - lastTime) / 1000;
+            /* clamp dt to avoid a huge burst after tab switch */
+            if (dt > 0.1) dt = 0.1;
+            lastTime = ts;
+
+            updateSquares(dt);
+            drawGrid();
+            rafId = requestAnimationFrame(animate);
+        }
+
+        /* ── start / stop helpers ── */
+        function startLoop() {
+            if (rafId === null) {
+                lastTime = 0;
+                rafId = requestAnimationFrame(animate);
+            }
+        }
+        function stopLoop() {
+            if (rafId !== null) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+        }
+
+        /* ── IntersectionObserver: pause when tab/canvas is off-screen ── */
+        var io = new IntersectionObserver(function (entries) {
+            isInView = entries[0].isIntersecting;
+            if (isInView) {
+                startLoop();
+            } else {
+                stopLoop();
+            }
+        }, { threshold: 0 });
+        io.observe(canvas);
+
+        /* ── debounced resize: rebuild grid 150 ms after user stops resizing ── */
+        function onResize() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+                setupGrid();
+            }, 150);
+        }
+        window.addEventListener('resize', onResize);
+
+        /* ── clean up on unload ── */
         window.addEventListener('pagehide', function () {
-            if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+            stopLoop();
+            io.disconnect();
         });
+
+        /* ── kick off ── */
+        setupGrid();
+        startLoop();
     }());
     </script>
 </body>
