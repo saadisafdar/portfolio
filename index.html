@@ -17,11 +17,21 @@
         }
 
         body {
-            background-color: #f5f0e8;
+            background-color: #0a0a0f;
             color: #000;
             font-family: 'Space Mono', monospace;
             padding: 40px 20px;
             min-height: 100vh;
+        }
+
+        /* Warp tunnel canvas — sits behind everything */
+        #warp-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            display: block;
         }
 
         /* Header Section */
@@ -35,9 +45,10 @@
             font-size: 48px;
             font-weight: 900;
             letter-spacing: 2px;
-            color: #000;
+            color: #ffffff;
             margin-bottom: 0;
             text-transform: uppercase;
+            text-shadow: 0 2px 16px rgba(0,0,0,0.7);
         }
 
         .header p {
@@ -180,8 +191,8 @@
             text-align: center;
             margin-top: 60px;
             padding-top: 30px;
-            border-top: 3px solid #333;
-            color: #666;
+            border-top: 3px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.5);
             font-size: 13px;
             letter-spacing: 0.5px;
         }
@@ -217,6 +228,8 @@
     </style>
 </head>
 <body>
+    <!-- Warp tunnel background -->
+    <canvas id="warp-bg" aria-hidden="true"></canvas>
     <div class="container">
         <!-- Header -->
         <div class="header">
@@ -267,5 +280,141 @@
             <p>Click any card to visit that portfolio template →</p>
         </div>
     </div>
+
+    <script>
+    (function () {
+        'use strict';
+
+        var canvas = document.getElementById('warp-bg');
+        var ctx    = canvas.getContext('2d');
+        var rafId  = null;
+
+        /* ── tunables ── */
+        var BG_COLOR   = '#0a0a0f';
+        var GRID_COLOR = 'rgba(60, 80, 120, 0.55)';
+        var CELL       = 60;          // grid cell size in px (world space)
+        var VP_Y_FRAC  = 0.42;        // vanishing point vertical position (fraction of height)
+        var SPEED      = 0.4;         // grid scroll speed (px/frame in world space)
+        var BEAM_COUNT = 5;
+
+        /* ── beam definitions (created once) ── */
+        var beams = (function () {
+            var list = [];
+            var hues = [200, 280, 160, 320, 40]; // cyan-blue, purple, green, pink, amber
+            for (var i = 0; i < BEAM_COUNT; i++) {
+                list.push({
+                    hue:      hues[i % hues.length],
+                    xFrac:    0.1 + (i / BEAM_COUNT) * 0.8,  // spread across width
+                    yFrac:    Math.random(),                  // phase offset
+                    duration: 2.8 + Math.random() * 1.6,     // seconds for one pass
+                    width:    6 + Math.random() * 6,         // px
+                    height:   0.18 + Math.random() * 0.14    // fraction of screen height
+                });
+            }
+            return list;
+        }());
+
+        /* ── resize handler ── */
+        function resize() {
+            canvas.width  = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        /* ── draw one frame ── */
+        var offset = 0; // scrolling offset for grid
+        var last   = null;
+
+        function draw(ts) {
+            if (last === null) last = ts;
+            var dt = (ts - last) / 1000; // seconds
+            last = ts;
+
+            var W  = canvas.width;
+            var H  = canvas.height;
+            var vx = W / 2;
+            var vy = H * VP_Y_FRAC;
+
+            /* background fill */
+            ctx.fillStyle = BG_COLOR;
+            ctx.fillRect(0, 0, W, H);
+
+            /* ── perspective grid ── */
+            ctx.save();
+            ctx.strokeStyle = GRID_COLOR;
+            ctx.lineWidth   = 0.8;
+
+            /* advance the scrolling offset */
+            offset = (offset + SPEED) % CELL;
+
+            /* Horizontal lines (receding toward vp) */
+            var hLines = 18;
+            for (var r = 0; r <= hLines; r++) {
+                /* map rows evenly from bottom of screen up to just past vp */
+                var t  = r / hLines;                            // 0 = bottom, 1 = near-vp
+                /* add scrolling: shift t slightly and wrap */
+                var tOff = ((t + (offset / CELL) / hLines) % 1);
+                /* perspective: lines bunch up near vp */
+                var yWorld = vy + (H - vy) * Math.pow(1 - tOff, 2.2);
+
+                ctx.beginPath();
+                /* line extends from left-of-screen to right */
+                var xLeft  = vx + (0 - vx) * ((yWorld - vy) / (H - vy));
+                var xRight = vx + (W - vx) * ((yWorld - vy) / (H - vy));
+                ctx.moveTo(xLeft,  yWorld);
+                ctx.lineTo(xRight, yWorld);
+                ctx.stroke();
+            }
+
+            /* Vertical lines (radiating from vp to bottom edge) */
+            var vLines = 14;
+            for (var c = 0; c <= vLines; c++) {
+                var xFrac = c / vLines;          // 0 = left edge, 1 = right edge
+                var xBot  = xFrac * W;
+                ctx.beginPath();
+                ctx.moveTo(vx,   vy);
+                ctx.lineTo(xBot, H);
+                ctx.stroke();
+            }
+
+            ctx.restore();
+
+            /* ── beams ── */
+            for (var b = 0; b < beams.length; b++) {
+                var bm   = beams[b];
+                /* phase cycles 0→1 over duration seconds */
+                bm.yFrac = (bm.yFrac + dt / bm.duration) % 1;
+
+                var bx = bm.xFrac * W;
+                var bh = bm.height * H;
+                /* travel from bottom+bh up to -bh */
+                var by = H + bh - bm.yFrac * (H + 2 * bh);
+
+                var grad = ctx.createLinearGradient(bx, by + bh, bx, by);
+                grad.addColorStop(0, 'hsla(' + bm.hue + ', 90%, 65%, 0)');
+                grad.addColorStop(0.3, 'hsla(' + bm.hue + ', 90%, 65%, 0.55)');
+                grad.addColorStop(0.7, 'hsla(' + bm.hue + ', 90%, 65%, 0.55)');
+                grad.addColorStop(1, 'hsla(' + bm.hue + ', 90%, 65%, 0)');
+
+                ctx.save();
+                ctx.fillStyle = grad;
+                /* soft glow: draw a narrow rectangle */
+                ctx.fillRect(bx - bm.width / 2, by, bm.width, bh);
+                ctx.restore();
+            }
+
+            rafId = requestAnimationFrame(draw);
+        }
+
+        /* ── init ── */
+        resize();
+        window.addEventListener('resize', resize);
+        rafId = requestAnimationFrame(draw);
+
+        /* cancel loop on unload to avoid ghost loops */
+        window.addEventListener('pagehide', function () {
+            if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        });
+    }());
+    </script>
 </body>
 </html>
