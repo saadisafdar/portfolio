@@ -43,6 +43,8 @@ This repository includes projects built with technologies such as:
 - CSS3
 - JavaScript
 - TypeScript
+- Vue.js
+- Vuetify
 - React
 - Next.js
 - Tailwind CSS
