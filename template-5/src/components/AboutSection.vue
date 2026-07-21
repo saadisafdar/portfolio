@@ -73,9 +73,8 @@ const textRef    = ref(null)
 const imgRef     = ref(null)
 const imgFailed  = ref(false)
 
-// Dynamic string — prevents Vite from statically resolving a missing public asset at build time.
-// Place your photo at:  template-5/public/saadi.png
-const profileSrc = '/saadi.png'
+// Dynamic string with import.meta.env.BASE_URL — ensures correct path resolution in dev, build, and production base URL
+const profileSrc = `${import.meta.env.BASE_URL}saadi.png`
 
 onMounted(() => {
   const observer = new IntersectionObserver(
