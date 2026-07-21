@@ -36,12 +36,8 @@ htmlcov/
 Thumbs.db
 
 # Environment
-.env
-.env.local
-.env.*
 
 # Editors
-.vscode/
 .idea/
 *.sublime-project
 *.sublime-workspace
@@ -163,7 +159,6 @@ public/build/
 # IDE and editor specific
 .vs/
 .vsc/
-.vscode/
 .idea/
 *.swp
 *.swo
@@ -291,7 +286,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .venv
 env/
 venv/
@@ -403,7 +397,6 @@ Rakefile
 Capfile
 *.rake
 .db.yml
-.env
 config/database.yml
 config/secrets.yml
 
@@ -440,11 +433,8 @@ tmp/
 .deploy/
 .docker/
 .elasticbeanstalk/
-.env
 .env.backup
-.env.local
 .env.stage
-.env.production
 .environment
 .foreman
 .git-fresh-check
@@ -543,3 +533,7 @@ vendor/cache/
 vendor/gems/
 vendor/ruby/
 ```
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+config.bat
